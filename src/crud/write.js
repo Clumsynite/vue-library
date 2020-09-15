@@ -3,4 +3,12 @@ const writToStorage = array => {
   storage.setItem("library", JSON.stringify(array));
 };
 
-export { writToStorage };
+const addNewBook = object => {
+  const storage = window.localStorage
+  const library = storage.getItem('library')
+  let array = JSON.parse(library)
+  array.push(object)
+  writToStorage(array)
+}
+
+export { addNewBook };

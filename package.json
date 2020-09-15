@@ -9,10 +9,10 @@
     "library",
     "localStorage"
   ],
-  "homepage": "",
+  "homepage": "https://clumsynite.github.io/vue-library",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Clumsynite/"
+    "url": "https://github.com/Clumsynite/vue-library"
   },
   "private": true,
   "scripts": {

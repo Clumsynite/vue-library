@@ -1,14 +1,20 @@
 <template>
   <div id="shelf">
-    SHELF
+    <div id="book">
+      
+    </div>
   </div>
 </template>
 
 <script>
+import { readFromStorage } from '../crud/read'
+
 export default {
   name: "Shelf",
   data: function() {
-    return {};
+    return {
+      libraryArray: readFromStorage()
+    };
   },
   methods: {}
 };
