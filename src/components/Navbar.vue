@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     mouseOver: function(e) {
-      e.target.classList.add("animate__animated", "animate__wobble");
+      e.target.classList.add("animate__animated", "animate__flash");
       setTimeout(() => {
         e.target.classList = "animate__animated";
       }, 1000);
