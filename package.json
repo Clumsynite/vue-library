@@ -1,6 +1,13 @@
 {
   "name": "vue-library",
   "version": "0.1.0",
+  "description": "Clumsyknight's js-library built using vue.js framework",
+  "keywords": ["vue", "js", "framework", "library", "localStorage"],
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Clumsynite/"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
