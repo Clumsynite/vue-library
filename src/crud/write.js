@@ -19,7 +19,7 @@ const template = () => {
   const book2 = newBook("book2", "you", 420, false);
 
   const storage = window.localStorage;
-  if(storage.getItem('library') == null){
+  if (storage.getItem("library") == null) {
     storage.setItem("library", JSON.stringify([book1, book2]));
   }
 };
