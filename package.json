@@ -2,7 +2,13 @@
   "name": "vue-library",
   "version": "0.1.0",
   "description": "Clumsyknight's js-library built using vue.js framework",
-  "keywords": ["vue", "js", "framework", "library", "localStorage"],
+  "keywords": [
+    "vue",
+    "js",
+    "framework",
+    "library",
+    "localStorage"
+  ],
   "homepage": "",
   "repository": {
     "type": "git",
@@ -27,9 +33,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
-    "less": "^3.0.4",
-    "less-loader": "^5.0.0",
-    "prettier": "^1.19.1",
+    "prettier": "1.19.1",
     "vue-template-compiler": "^2.6.11"
   }
 }
