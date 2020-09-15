@@ -1,11 +1,11 @@
 import Vue from "vue";
 import App from "./App.vue";
 
-import { template } from './crud/write.js'
+import { template } from "./crud/write.js";
 
 Vue.config.productionTip = false;
 
-template()
+template();
 
 new Vue({
   render: h => h(App)

@@ -27,14 +27,13 @@ export default {
   },
   methods: {
     mouseOver: function(e) {
-      e.target.classList.add("animate__animated", "animate__bounce");
+      e.target.classList.add("animate__animated", "animate__wobble");
       setTimeout(() => {
         e.target.classList = "animate__animated";
       }, 1000);
     },
     onClick: function(e) {
-      // Enable after setting up localStorage and shelves
-      // e.target.classList.add("animate__animated", "animate__zoomOut");
+      e.target.classList.add("animate__animated", "animate__zoomOut");
       setTimeout(() => {
         e.target.classList = "animate__animated";
         this.show = false;
