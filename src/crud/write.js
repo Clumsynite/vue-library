@@ -1,3 +1,5 @@
+import { newBook } from './object.js'
+
 const writToStorage = array => {
   const storage = window.localStorage;
   storage.setItem("library", JSON.stringify(array));
@@ -11,4 +13,14 @@ const addNewBook = object => {
   writToStorage(array)
 }
 
-export { addNewBook };
+const template = () => {
+  const book1 = newBook('book1', 'me', 69, true)
+
+  const book2 = newBook('book2', 'you', 420, false)
+
+  const storage = window.localStorage;
+  storage.setItem("library", JSON.stringify([book1, book2]));
+  
+}
+
+export { addNewBook, template };
