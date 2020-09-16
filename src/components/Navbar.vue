@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     mouseOver: function(e) {
-      e.target.classList.add("animate__animated", "animate__flash");
+      e.target.classList.add("animate__animated", "animate__headShake");
       setTimeout(() => {
         e.target.classList = "animate__animated";
       }, 1000);
@@ -61,5 +61,6 @@ export default {
   color: #111;
   border: 1px solid grey;
   outline: none;
+  padding: 5px;
 }
 </style>

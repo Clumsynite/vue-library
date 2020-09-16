@@ -39,7 +39,7 @@ export default {
 
 <style scoped>
 #shelf {
-  margin: 20px 10px;
+  margin: 20px 0;
 }
 #grid {
   display: grid;
@@ -50,7 +50,8 @@ export default {
 #book {
   padding: 5px;
   background-color: white;
-  box-shadow: 0 4px 8px 0 grey;
+  box-shadow: 2px 2px 2px 1px grey;
+  height: 140px;
 }
 
 @media screen and (max-width: 600px) {
