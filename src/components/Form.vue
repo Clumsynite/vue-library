@@ -1,45 +1,72 @@
 <template>
-  <form id="new-form" v-if="adding">
+  <div id="new-form" class="book">
     <div id="cancel-div">
-      <button>X</button>
+      <button v-on:click="hideForm">X</button>
     </div>
     <div id="get-title">
-      <label>Book Name:</label>
-      <input type="text" name="title" />
+      <input type="text" name="title" placeholder="Book Name " v-model="title"/>
     </div>
     <div id="get-author">
-      <label>Author's Name:</label>
-      <input type="text" name="author" />
+      <input type="text" name="author" placeholder="Author's Name" v-model="author"/>
     </div>
     <div id="get-pages">
-      <label>Number of Pages:</label>
-      <input type="number" name="pages" />
+      <input type="number" name="pages" placeholder="Number of Pages" v-model.number="pages"/>
     </div>
     <div id="get-read">
       <label>Have you read it?:</label>
-      <input type="checkbox" name="read" />
+      <input type="checkbox" name="read" v-model="read"/>
     </div>
     <div id="accept">
-      <button>Add Book</button>
+      <button v-on:click="onClick">Add Book</button>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
 import { serverBus } from "../main";
+import { addNewBook } from "../crud/write";
+import { newBook } from '../crud/object'
 export default {
   name: "Form",
   data() {
     return {
-      adding: false
-    };
+      title: '',
+      author: '',
+      pages: '',
+      read: ''
+    }
   },
-  created() {
-    serverBus.$on("adding", value => {
-      this.adding = value;
-    });
+  methods: {
+    onClick: function() {
+      if(this.validateForm()){
+         const book = newBook(this.title, this.author, this.pages, this.read)
+        addNewBook(book)
+        this.hideForm()
+      }else {
+        alert('You might have missed a field')
+      }
+    },
+    hideForm() {
+      serverBus.$emit("added", true);
+    },
+    validateForm() {
+      const title = this.title
+      const author = this.author
+      const page = this.pages
+      const read = this.read
+
+      if(this.checkNotNull(title) && this.checkNotNull(author) && this.checkNotNull(page)){
+        return true
+      }
+      return false
+    },
+    checkNotNull(data) {
+      return data.length === 0 ? false : true
+    }
   }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

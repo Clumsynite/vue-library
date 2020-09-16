@@ -2,30 +2,30 @@
   <div id="shelf">
     <transition-group
       name="slide-in"
-      enter-active-class="animate__animated animate__fadeInDown"
+      enter-active-class="animate__animated animate__flipInY"
       leave-active-class="animate__animated animate__fadeOutDownBig"
       id="grid"
     >
       <div
-        id="book"
+        class="book"
         v-for="book in library"
         :key="book.title"
         @mouseover="mouseOver"
       >
-        <div id="title">
+        <div class="title">
           {{ book.title }}
         </div>
-        <div id="author">
-          {{ book.author }}
+        <div class="author">
+          Written by {{ book.author }}
         </div>
-        <div id="pages">
-          {{ book.pages }}
+        <div class="pages">
+          Pages: {{ book.pages }}
         </div>
-        <div id="read">
-          {{ book.read ? "You've read this already" : "Haven't read this" }}
+        <div class="read">
+          {{ book.read ? "I've read this already" : "Will read this later" }}
         </div>
       </div>
-      <Form :key="'book-form'" />
+      <Form :key="'book-form'" v-if="adding" />
     </transition-group>
   </div>
 </template>
@@ -34,6 +34,7 @@
 import { readFromStorage } from "../crud/read";
 import Form from "./Form.vue";
 
+import { serverBus } from "../main";
 export default {
   name: "Shelf",
   components: {
@@ -47,6 +48,17 @@ export default {
   },
   methods: {
     mouseOver: function() {}
+  },
+  created() {
+    serverBus.$on("adding", value => {
+      this.adding = value;
+    });
+    serverBus.$on('added', value => {
+      this.adding = !value
+      if(value){
+        this.library = readFromStorage()
+      }
+    })
   }
 };
 </script>
@@ -61,26 +73,33 @@ export default {
   column-gap: 10px;
   row-gap: 10px;
 }
-#book {
+.book {
+  /* min-width: 120px; */
+  min-height: 120px;
   padding: 5px;
   background-color: white;
   box-shadow: 2px 2px 2px 1px grey;
-  height: 140px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1100px) {
+  #grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 880px) {
   #grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 680px) {
   #grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media screen and (max-width: 360px) {
+/* @media screen and (max-width: 460px) {
   #grid {
+    margin: 2vw;
     grid-template-columns: repeat(1, 1fr);
-  }
-}
+  } 
+} */
 </style>
