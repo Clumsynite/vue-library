@@ -7,17 +7,19 @@
       id="grid"
     >
       <div class="book" v-for="(book, index) in library" :key="book.title">
-        <div class="cancel-div">
-          <button v-on:click="onDelete" :data-index="index" class="cancel-btn">
-            <i class="material-icons">delete</i>
-          </button>
-        </div>
-        <div class="title">
-          {{ book.title }}
+        <div class="top-div">
+          <div class="title">
+            {{ book.title }}
+          </div>
+          <div class="cancel-div">
+            <button v-on:click="onDelete" class="cancel-btn">
+              <i class="material-icons" :data-index="index">delete</i>
+            </button>
+          </div>
         </div>
         <div class="author">Written by {{ book.author }}</div>
         <div class="pages">Pages: {{ book.pages }}</div>
-        <div class="read">
+        <div class="read" v-on:click="onToggle" :data-index="index">
           {{ book.read ? "I've read this already" : "Will read this later" }}
         </div>
       </div>
@@ -29,6 +31,7 @@
 <script>
 import { readFromStorage } from "../crud/read";
 import { deleteBook } from "../crud/delete";
+import { toggleRead } from "../crud/update";
 import Form from "./Form.vue";
 
 import { serverBus } from "../main";
@@ -54,6 +57,12 @@ export default {
       } else {
         return agree;
       }
+    },
+    onToggle: function(e) {
+      const elem = e.target;
+      const index = elem.getAttribute("data-index");
+      toggleRead(index);
+      this.library = readFromStorage();
     }
   },
   created() {
@@ -104,11 +113,27 @@ export default {
   cursor: pointer;
   outline: none;
 }
-.cancel-btn:hover {
-  color: red;
+.top-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .title {
+  max-width: 80%;
   overflow-y: auto;
+}
+.read {
+  user-select: none;
+}
+
+@media screen and (hover: hover) {
+  .cancel-btn:hover {
+    color: red;
+  }
+  .read:hover {
+    cursor: pointer;
+    color: blue;
+  }
 }
 
 @media screen and (max-width: 1100px) {
