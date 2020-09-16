@@ -14,13 +14,14 @@ const addNewBook = object => {
 };
 
 const template = () => {
+  const storage = window.localStorage;
+  const library = JSON.parse(storage.getItem("library"));
   const book1 = newBook("book1", "me", 100, true);
 
   const book2 = newBook("book2", "you", 200, false);
 
-  const storage = window.localStorage;
-  if (storage.getItem("library") == null) {
-    storage.setItem("library", JSON.stringify([book1, book2]));
+  if (library === null || library.length === 0) {
+    writToStorage([book1, book2]);
   }
 };
 
