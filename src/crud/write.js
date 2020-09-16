@@ -16,8 +16,8 @@ const addNewBook = object => {
 const template = () => {
   const storage = window.localStorage;
   const library = JSON.parse(storage.getItem("library"));
+  
   const book1 = newBook("book1", "me", 100, true);
-
   const book2 = newBook("book2", "you", 200, false);
 
   if (library === null || library.length === 0) {

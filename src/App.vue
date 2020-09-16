@@ -19,20 +19,16 @@ export default {
 </script>
 
 <style>
-/* Animate.css - Animations Library */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
-/* Materialize Icons */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-/* Poppins - Font */
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 * {
   box-sizing: border-box;
 }
-
 body {
   background-color: #eee;
 }
-
 #app {
   font-family: "Poppins", sans-serif;
 }
