@@ -17,8 +17,8 @@
             </button>
           </div>
         </div>
-        <div class="author">Written by {{ book.author }}</div>
-        <div class="pages">Pages: {{ book.pages }}</div>
+        <div class="author"> By {{ book.author }}</div>
+        <div class="pages"> {{ book.pages }} Pages</div>
         <div class="read" v-on:click="onToggle" :data-index="index">
           {{ book.read ? "I've read this already" : "Will read this later" }}
         </div>
@@ -95,9 +95,13 @@ export default {
   padding: 5px;
   background-color: white;
   box-shadow: 2px 2px 2px 1px grey;
+  text-align: center;
 }
-.book:hover {
-  box-shadow: 2px 2px 2px 1px black;
+.top-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
 }
 .cancel-div {
   display: block;
@@ -113,20 +117,26 @@ export default {
   cursor: pointer;
   outline: none;
 }
-.top-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 .title {
   max-width: 80%;
   overflow-y: auto;
+  font-weight: bold;
+  font-size: 18px;
+}
+.author {
+  font-style: italic;
+}
+.author, .pages, .read {
+  padding: 5px 0;
 }
 .read {
   user-select: none;
 }
 
 @media screen and (hover: hover) {
+  .book:hover {
+    box-shadow: 2px 2px 2px 1px black;
+  }
   .cancel-btn:hover {
     color: red;
   }

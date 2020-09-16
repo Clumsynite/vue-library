@@ -8,9 +8,9 @@
       enter-active-class="animate__animated animate__lightSpeedInRight"
       leave-active-class="animate__animated animate__lightSpeedOutRight"
     >
-      <button id="add-new-book" v-on:click="onClick" v-if="show">
+      <div id="add-new-book" v-on:click="onClick" v-if="show">
         {{ btnTitle }}
-      </button>
+      </div>
     </transition>
   </div>
 </template>
@@ -45,13 +45,14 @@ export default {
 #navbar {
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
   justify-content: space-between;
   padding: 5px;
 }
 
 #title {
   font-size: 20px;
+  font-weight: bold;
 }
 
 #add-new-book {
@@ -60,5 +61,16 @@ export default {
   border: 1px solid grey;
   outline: none;
   padding: 5px;
+  
+  background: linear-gradient(to right, black 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
 }
+#add-new-book:hover {
+  background-position: left bottom;
+  color: white;
+  font-weight: bold;
+}
+
 </style>
