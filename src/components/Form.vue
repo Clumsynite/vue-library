@@ -1,7 +1,9 @@
 <template>
   <div id="new-form" class="book">
-    <div id="cancel-div">
-      <button v-on:click="hideForm">X</button>
+    <div class="cancel-div">
+      <button v-on:click="hideForm" class="cancel-btn">
+        <i class="material-icons">delete</i>
+      </button>
     </div>
     <div id="get-title">
       <input

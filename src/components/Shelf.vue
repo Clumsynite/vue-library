@@ -70,7 +70,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #shelf {
   margin: 20px 0;
 }
