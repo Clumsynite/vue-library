@@ -13,12 +13,14 @@
           </div>
           <div class="cancel-div">
             <button v-on:click="onDelete" class="cancel-btn">
-              <i class="material-icons" :data-index="index">delete</i>
+              <i class="material-icons delete-btn" :data-index="index"
+                >delete</i
+              >
             </button>
           </div>
         </div>
-        <div class="author"> By {{ book.author }}</div>
-        <div class="pages"> {{ book.pages }} Pages</div>
+        <div class="author">By {{ book.author }}</div>
+        <div class="pages">{{ book.pages }} Pages</div>
         <div class="read" v-on:click="onToggle" :data-index="index">
           {{ book.read ? "I've read this already" : "Will read this later" }}
         </div>
@@ -87,11 +89,11 @@ export default {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   column-gap: 10px;
-  row-gap: 10px;
+  row-gap: 15px;
 }
 .book {
   max-width: 200px;
-  min-height: 120px;
+  min-height: 170px;
   padding: 5px;
   background-color: white;
   box-shadow: 2px 2px 2px 1px grey;
@@ -116,6 +118,9 @@ export default {
   padding: 0px;
   cursor: pointer;
   outline: none;
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
 }
 .title {
   max-width: 80%;
@@ -125,9 +130,13 @@ export default {
 }
 .author {
   font-style: italic;
+  overflow-y: auto;
+  width: 100%;
 }
-.author, .pages, .read {
-  padding: 5px 0;
+.author,
+.pages,
+.read {
+  padding: 8px 0;
 }
 .read {
   user-select: none;
@@ -139,6 +148,7 @@ export default {
   }
   .cancel-btn:hover {
     color: red;
+    background-position: left bottom;
   }
   .read:hover {
     cursor: pointer;
