@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { serverBus } from "../main";
+
 export default {
   name: "Navbar",
   data: function() {
@@ -27,7 +29,7 @@ export default {
   },
   methods: {
     mouseOver: function(e) {
-      e.target.classList.add("animate__animated", "animate__headShake");
+      e.target.classList.add("animate__animated", "animate__pulse");
       setTimeout(() => {
         e.target.classList = "animate__animated";
       }, 1000);
@@ -38,6 +40,7 @@ export default {
         e.target.classList = "animate__animated";
         this.show = false;
       }, 1000);
+      serverBus.$emit("adding", this.show);
     }
   }
 };

@@ -2,10 +2,16 @@
   <div id="shelf">
     <transition-group
       name="slide-in"
-      enter-active-class="animate__animated animate__slideInDown"
+      enter-active-class="animate__animated animate__fadeInDown"
+      leave-active-class="animate__animated animate__fadeOutDownBig"
       id="grid"
     >
-      <div id="book" v-for="book in library" :key="book.title">
+      <div
+        id="book"
+        v-for="book in library"
+        :key="book.title"
+        @mouseover="mouseOver"
+      >
         <div id="title">
           {{ book.title }}
         </div>
@@ -16,24 +22,32 @@
           {{ book.pages }}
         </div>
         <div id="read">
-          {{ book.read }}
+          {{ book.read ? "You've read this already" : "Haven't read this" }}
         </div>
       </div>
+      <Form :key="'book-form'" />
     </transition-group>
   </div>
 </template>
 
 <script>
 import { readFromStorage } from "../crud/read";
+import Form from "./Form.vue";
 
 export default {
   name: "Shelf",
+  components: {
+    Form
+  },
   data: function() {
     return {
-      library: readFromStorage()
+      library: readFromStorage(),
+      adding: false
     };
   },
-  methods: {}
+  methods: {
+    mouseOver: function() {}
+  }
 };
 </script>
 
