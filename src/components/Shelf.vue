@@ -87,7 +87,7 @@ export default {
 }
 #grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   column-gap: 10px;
   row-gap: 15px;
 }
@@ -142,6 +142,36 @@ export default {
   user-select: none;
 }
 
+@media screen and (max-width: 1100px) {
+  #grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media screen and (max-width: 950px) {
+  #grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 800px) {
+  #grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 650px) {
+  #grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 440px) {
+  #grid {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 2vw;
+  }
+  .book {
+    max-width: 90vw;
+  }
+}
+
 @media screen and (hover: hover) {
   .book:hover {
     box-shadow: 2px 2px 2px 1px black;
@@ -153,22 +183,6 @@ export default {
   .read:hover {
     cursor: pointer;
     color: blue;
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  #grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media screen and (max-width: 880px) {
-  #grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media screen and (max-width: 680px) {
-  #grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 </style>
