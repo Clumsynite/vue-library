@@ -4,13 +4,11 @@
       {{ title }}
     </div>
 
-    <transition enter-active-class="animate__animated animate__lightSpeedInRight" leave-active-class="animate__animated animate__lightSpeedOutRight">
-      <button
-        id="add-new-book"
-        @mouseover="mouseOver"
-        v-on:click="onClick"
-        v-if="show"
-      >
+    <transition
+      enter-active-class="animate__animated animate__lightSpeedInRight"
+      leave-active-class="animate__animated animate__lightSpeedOutRight"
+    >
+      <button id="add-new-book" v-on:click="onClick" v-if="show">
         {{ btnTitle }}
       </button>
     </transition>
@@ -30,17 +28,15 @@ export default {
     };
   },
   methods: {
-    mouseOver: function(e) {
-    },
     onClick: function() {
       serverBus.$emit("adding", this.show);
       this.show = false;
     }
   },
   created() {
-    serverBus.$on('added', value => {
-      this.show = value
-    })
+    serverBus.$on("added", value => {
+      this.show = value;
+    });
   }
 };
 </script>

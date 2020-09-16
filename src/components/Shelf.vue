@@ -15,12 +15,8 @@
         <div class="title">
           {{ book.title }}
         </div>
-        <div class="author">
-          Written by {{ book.author }}
-        </div>
-        <div class="pages">
-          Pages: {{ book.pages }}
-        </div>
+        <div class="author">Written by {{ book.author }}</div>
+        <div class="pages">Pages: {{ book.pages }}</div>
         <div class="read">
           {{ book.read ? "I've read this already" : "Will read this later" }}
         </div>
@@ -53,12 +49,12 @@ export default {
     serverBus.$on("adding", value => {
       this.adding = value;
     });
-    serverBus.$on('added', value => {
-      this.adding = !value
-      if(value){
-        this.library = readFromStorage()
+    serverBus.$on("added", value => {
+      this.adding = !value;
+      if (value) {
+        this.library = readFromStorage();
       }
-    })
+    });
   }
 };
 </script>

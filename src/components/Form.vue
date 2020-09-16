@@ -4,17 +4,32 @@
       <button v-on:click="hideForm">X</button>
     </div>
     <div id="get-title">
-      <input type="text" name="title" placeholder="Book Name " v-model="title"/>
+      <input
+        type="text"
+        name="title"
+        placeholder="Book Name "
+        v-model="title"
+      />
     </div>
     <div id="get-author">
-      <input type="text" name="author" placeholder="Author's Name" v-model="author"/>
+      <input
+        type="text"
+        name="author"
+        placeholder="Author's Name"
+        v-model="author"
+      />
     </div>
     <div id="get-pages">
-      <input type="number" name="pages" placeholder="Number of Pages" v-model.number="pages"/>
+      <input
+        type="number"
+        name="pages"
+        placeholder="Number of Pages"
+        v-model.number="pages"
+      />
     </div>
     <div id="get-read">
       <label>Have you read it?:</label>
-      <input type="checkbox" name="read" v-model="read"/>
+      <input type="checkbox" name="read" v-model="read" />
     </div>
     <div id="accept">
       <button v-on:click="onClick">Add Book</button>
@@ -25,48 +40,49 @@
 <script>
 import { serverBus } from "../main";
 import { addNewBook } from "../crud/write";
-import { newBook } from '../crud/object'
+import { newBook } from "../crud/object";
 export default {
   name: "Form",
   data() {
     return {
-      title: '',
-      author: '',
-      pages: '',
-      read: ''
-    }
+      title: "",
+      author: "",
+      pages: "",
+      read: ""
+    };
   },
   methods: {
     onClick: function() {
-      if(this.validateForm()){
-         const book = newBook(this.title, this.author, this.pages, this.read)
-        addNewBook(book)
-        this.hideForm()
-      }else {
-        alert('You might have missed a field')
+      if (this.validateForm()) {
+        const book = newBook(this.title, this.author, this.pages, this.read);
+        addNewBook(book);
+        this.hideForm();
+      } else {
+        alert("You might have missed a field");
       }
     },
     hideForm() {
       serverBus.$emit("added", true);
     },
     validateForm() {
-      const title = this.title
-      const author = this.author
-      const page = this.pages
-      const read = this.read
+      const title = this.title;
+      const author = this.author;
+      const page = this.pages;
 
-      if(this.checkNotNull(title) && this.checkNotNull(author) && this.checkNotNull(page)){
-        return true
+      if (
+        this.checkNotNull(title) &&
+        this.checkNotNull(author) &&
+        this.checkNotNull(page)
+      ) {
+        return true;
       }
-      return false
+      return false;
     },
     checkNotNull(data) {
-      return data.length === 0 ? false : true
+      return data.length === 0 ? false : true;
     }
   }
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
