@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: "/vue-library/",
+  publicPath: '',
   pages: {
     index: {
       entry: "src/main.js",
@@ -8,5 +8,4 @@ module.exports = {
       title: "Clumsyknight's Library"
     }
   },
-  lintOnSave: true
-};
+}
